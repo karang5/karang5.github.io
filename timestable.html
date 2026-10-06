@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <form action="timestable2.html" onsubmit="return = true">
-            <ol>
-                <li>table: <input name="startnumber"></li>
-                <startnumber>
-            </ol>
-        </form>
+<body>
+
+<script>
+    function multiples(table, start, rows) {
+        var output = "";
+
+        for (var i = 0; i < rows; i++) {
+            output += table + " x " + (start + i) + " = " + (table * (start + i)) + "<br>";
+        }
+        return output;
+    }
+
+    function main() {
+        var table = Number(document.getElementById("table").value);
+        var start = Number(document.getElementById("start").value);
+        var rows = Number(document.getElementById("rows").value);
+
+        var table_output = document.getElementById("table_output");
+        table_output.innerHTML = multiples(table, start, rows);
+
+        return false;
+    }
+</script>
+
+<form onsubmit="main(); return false;">
+    <ol>
+        <li>table: <input id="table" type="number" name="table"></li>
+        <li>startnumber: <input id="start" type="number" name="start"></li>
+        <li>rows: <input id="rows" type="number" name="rows"></li>
+    </ol>
+
+    <input type="submit">
+</form>
+
+<div id="table_output"></div>
+
+</body>
 </html>
